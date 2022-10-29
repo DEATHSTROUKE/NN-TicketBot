@@ -15,6 +15,7 @@ const ItemTop = (props) => {
                         alt="" className=" cart-item__img"/>
             }
             <div className="cart-item__title"><h3>{props.item.title}</h3></div>
+            <div className="cart-item__date">{props.item.date}</div>
             <button className="cart-item__delete" onClick={() => props.onDelete(props.item.id)}>
                 <Delete />
             </button>

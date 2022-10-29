@@ -21,7 +21,9 @@ class Store {
                 img: i.img,
                 description: i.description,
                 price: parseInt(i.price),
-                category: i.category
+                category: i.category,
+                date: i.date,
+                place: i.place
             })
         }
     }
@@ -57,6 +59,8 @@ class Store {
                 img: obj.img,
                 description: obj.description,
                 price: obj.price,
+                date: obj.date,
+                place: obj.place,
                 count: 1
             })
         }

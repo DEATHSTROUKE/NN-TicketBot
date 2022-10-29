@@ -15,17 +15,20 @@ const CategoryItem = (props) => {
                         alt="" className=" category-item__img"/>
             }
 
-            <div className=" category-item__title"><h3>{props.item.title}</h3></div>
-            <div className=" category-item__description">
+            <div className="category-item__title"><h3>{props.item.title}</h3></div>
+            <div className="category-item__description">
                 {props.item.description}
             </div>
-            <div className=" category-item__price">{[props.item.price]}₽</div>
-            <button className=" category-item__btn" type=" button"
-                    onClick={() => {
-                        props.onAdd(props.item.id)
-                    }}>
-                {window.innerWidth >= 635 ? "Добавить" : `${props.item.price}₽`}
-            </button>
+            <div className="category-item__row">
+                <div className="category-item__date">{props.item.date}</div>
+                {window.innerWidth >= 635 ? <div className="category-item__price">{[props.item.price]}₽</div> : ''}
+                <button className="category-item__btn" type=" button"
+                        onClick={() => {
+                            props.onAdd(props.item.id)
+                        }}>
+                    {window.innerWidth >= 635 ? "Добавить" : `${props.item.price}₽`}
+                </button>
+            </div>
         </div>
     );
 }

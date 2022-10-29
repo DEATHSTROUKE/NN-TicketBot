@@ -39,7 +39,7 @@ const App = () => {
                 }/>
                 <Route path="/" element={
                     <>
-                        <Header page="main"/>
+                        {/*<Header page="main"/>*/}
                         <Main page="main"/>
                         <Footer/>
                     </>

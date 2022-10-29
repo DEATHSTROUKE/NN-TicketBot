@@ -6,7 +6,7 @@ let tg = window.Telegram.WebApp;
 
 const CartPay = () => {
     useEffect(() => {
-        tg.MainButton.text = "ОФОРМИТЬ ЗАКАЗ";
+        tg.MainButton.text = "КУПИТЬ";
         tg.MainButton.show();
         tg.MainButton.onClick(() => {
             tg.MainButton.setParams({color: "#58cc58"})
@@ -16,6 +16,7 @@ const CartPay = () => {
                     id: item.id,
                     title: item.title,
                     price: item.price,
+                    date: item.date,
                     count: item.count
                 })
             })
@@ -37,7 +38,6 @@ const CartPay = () => {
                 <div className="pay__title"><h3>Сумма заказа</h3></div>
                 <div><h3>{store.totalPrice} ₽</h3></div>
             </div>
-            {/*<button className="pay__btn" onClick={onCheckout}><h3>Оформить заказ</h3></button>*/}
         </div>
     );
 }
