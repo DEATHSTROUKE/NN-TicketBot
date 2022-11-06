@@ -18,7 +18,7 @@ class Store {
             this.listProducts.push({
                 id: i.id,
                 title: i.title,
-                img: i.img,
+                img: `${process.env.REACT_APP_SERVER_NAME_PUBLIC}/img/${i.img}`,
                 description: i.description,
                 price: parseInt(i.price),
                 category: i.category,

@@ -19,3 +19,8 @@
 /react-app/yarn-error.log*
 
 /react-app/.env
+
+/backend/node_modules
+/backend/.idea
+/backend/.env
+/backend/migrations
