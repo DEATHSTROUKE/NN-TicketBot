@@ -8,6 +8,10 @@ const Category = (props) => {
         store.addCartItem(id)
     }
 
+    const onCollapse = (id) => {
+        store.toggleCollapseItem(id)
+    }
+
     return (
         <div className="category" id={"category" + props.id}>
             <div className="category__title">
@@ -18,7 +22,7 @@ const Category = (props) => {
                 {
                     store.listProducts.map((item) => {
                         if (item.category === props.title) {
-                            return <CategoryItem item={item} key={item.id} onAdd={addItemToCart}/>
+                            return <CategoryItem item={item} key={item.id} onAdd={addItemToCart} onCollapse={onCollapse}/>
                         }
                     })
                 }

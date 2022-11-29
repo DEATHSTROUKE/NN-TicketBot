@@ -217,6 +217,22 @@ h3 {
     line-height: 1.25em;
 }
 
+.description-btn {
+    background: transparent;
+    color: var(--tg-theme-link-color);
+    border: none;
+    padding: 5px 0;
+}
+
+.description-text {
+    height: 100%;
+}
+
+.hide {
+    opacity: 0;
+    height: 0;
+}
+
 .category-item__img {
     width: 100%;
     margin: 0 auto;

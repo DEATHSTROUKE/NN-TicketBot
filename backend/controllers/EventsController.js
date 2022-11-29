@@ -2,17 +2,10 @@ const ApiError = require('../error/ApiError')
 const {Orders, Events} = require('../models/models')
 const sequelize = require("sequelize");
 const DATE = [sequelize.fn('to_char', sequelize.col('date'), 'dd.mm.YYYY'), 'date']
+const {dateToDBFormat} = require('../functions/dateFunctions')
+
 
 class EventsController {
-    static dateToDBFormat(date) {
-        try {
-            let parts = date.split('.');
-            return new Date(parts[2], parts[1] - 1, parts[0]);
-        } catch (e) {
-            return 'bad date'
-        }
-    }
-
     async getAll(req, res) {
         const data = await Events.findAll({attributes: ['id', 'title', 'description', 'category', 'img', 'place', 'price', DATE]})
         res.json(data)
@@ -28,7 +21,7 @@ class EventsController {
         try {
             let {title, description, img, place, price, date} = req.body
             let category = 'Мероприятия'
-            date = EventsController.dateToDBFormat(date)
+            date = dateToDBFormat(date)
             const event = await Events.create({title, description, img, place, price, date, category})
             res.json(event)
         } catch (e) {
@@ -40,7 +33,7 @@ class EventsController {
         try {
             let {id, title, description, img, place, price, date} = req.body
             if (date) {
-                date = EventsController.dateToDBFormat(date)
+                date = dateToDBFormat(date)
             }
             await Events.update({title, description, img, place, price, date}, {where: {id}})
             res.json({success: "ok"})

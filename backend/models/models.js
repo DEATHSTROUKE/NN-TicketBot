@@ -5,7 +5,7 @@ const Events = sequelize.define('events', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     title: {type: DataTypes.STRING, allowNull: false},
     category: {type: DataTypes.STRING, allowNull: false},
-    description: {type: DataTypes.STRING},
+    description: {type: DataTypes.TEXT},
     img: {type: DataTypes.STRING},
     place: {type: DataTypes.STRING},
     price: {type: DataTypes.INTEGER, allowNull: false},

@@ -1,25 +1,23 @@
 const ApiError = require('../error/ApiError')
 const {Events, Orders} = require('../models/models')
 const sequelize = require("sequelize");
+const {Op} = require("sequelize");
 const DATE = [sequelize.fn('to_char', sequelize.col('date'), 'dd.mm.YYYY'), 'date']
+const {dateToDBFormat} = require('../functions/dateFunctions')
 
 
 class ApiController {
-    static dateToDBFormat(date) {
-        try {
-            let parts = date.split('.');
-            return new Date(parts[2], parts[1] - 1, parts[0]);
-        } catch (e) {
-            return 'bad date'
-        }
-    }
-
     async getAllCategory(req, res) {
         res.json({data: [{id: 1, name: "Мероприятия"}]})
     }
 
     async getAllInfo(req, res) {
-        const data = await Events.findAll({attributes: ['id', 'title', 'description', 'category', 'img', 'place', 'price', DATE]})
+        const date_now = new Date()
+        const data = await Events.findAll({
+            attributes: ['id', 'title', 'description', 'category', 'img', 'place', 'price', DATE, ['date', 'date_time']],
+            where: {date: {[Op.gte]: date_now}},
+            order: [['date_time', 'ASC']]
+        })
         res.json({tasks: data})
     }
 
@@ -37,14 +35,15 @@ class ApiController {
             })
             for (let order of orders) {
                 let event = await Events.findOne({
-                        raw: true,
-                        attributes: [['id', 'event_id'], 'title', 'price', DATE],
-                        where: {
-                            id: order.event_id
-                        }
-                    })
-                if (ApiController.dateToDBFormat(event.date) >= new Date()) {
+                    raw: true,
+                    attributes: [['id', 'event_id'], 'title', 'price', DATE],
+                    where: {
+                        id: order.event_id
+                    }
+                })
+                if (dateToDBFormat(event.date) >= new Date()) {
                     event.count = order.count
+                    event.order_id = order.id
                     user_ticket_groups.push(event)
                 }
             }

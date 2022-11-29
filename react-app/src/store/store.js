@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx";
 
 class Store {
-    listProducts = [];
+    listProducts = []
     listCategory = []
 
     cartItems = []
@@ -23,7 +23,8 @@ class Store {
                 price: parseInt(i.price),
                 category: i.category,
                 date: i.date,
-                place: i.place
+                place: i.place,
+                is_desc_show: true
             })
         }
     }
@@ -36,6 +37,14 @@ class Store {
                 title: i.name,
             })
         }
+    }
+
+    toggleCollapseItem(id) {
+        this.listProducts.forEach((item) => {
+            if (item.id === id) {
+                item.is_desc_show = !item.is_desc_show
+            }
+        })
     }
 
     addCartItem(id) {
