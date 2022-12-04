@@ -225,12 +225,11 @@ h3 {
 }
 
 .description-text {
-    height: 100%;
+    display: block;
 }
 
 .hide {
-    opacity: 0;
-    height: 0;
+    display: none;
 }
 
 .category-item__img {

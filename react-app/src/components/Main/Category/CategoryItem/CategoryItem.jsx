@@ -18,11 +18,11 @@ const CategoryItem = ({item, onAdd, onCollapse}) => {
 
             <div className="category-item__title"><h3>{item.title}</h3></div>
             <div className="category-item__description">
-                <button onClick={() => onCollapse(item.id)}
-                        className="description-btn">{item.is_desc_show ? 'Свернуть' : 'Развернуть'}</button>
                 <div className={cn('description-text', {'hide' : !item.is_desc_show})}>
                     {item.description}
                 </div>
+                <button onClick={() => onCollapse(item.id)}
+                        className="description-btn">{item.is_desc_show ? 'Свернуть описание' : 'Подробнее'}</button>
             </div>
             <div className="category-item__row">
                 <div className="category-item__date">{item.date}</div>

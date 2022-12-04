@@ -24,7 +24,7 @@ class Store {
                 category: i.category,
                 date: i.date,
                 place: i.place,
-                is_desc_show: true
+                is_desc_show: false
             })
         }
     }

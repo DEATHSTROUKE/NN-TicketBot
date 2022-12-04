@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/DEATHSTROUKE/NN-TicketBot-backend#readme",
   "dependencies": {
+    "@forestadmin/agent": "^1.4.4",
+    "@forestadmin/datasource-sequelize": "^1.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",

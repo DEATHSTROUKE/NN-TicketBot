@@ -1,4 +1,4 @@
-const sequelize = require('../db')
+const sequelize = require('./index')
 const {DataTypes} = require('sequelize')
 
 const Events = sequelize.define('events', {
