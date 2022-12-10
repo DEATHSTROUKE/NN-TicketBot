@@ -1,0 +1,42 @@
+version: "3"
+services:
+  postgres:
+    image: "postgres"
+    environment:
+      - POSTGRES_PASSWORD=post_pwd
+      - POSTGRES_DB=ticket_bot_db
+    restart: always
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+
+  nginx:
+    depends_on:
+      - server
+    environment:
+      - REACT_APP_SERVER_NAME=http://server
+      - REACT_APP_SERVER_NAME_PUBLIC=http://server/api
+    restart: always
+    build: ./react-app
+    ports:
+      - "80:80"
+
+  server:
+    build: ./backend
+    depends_on:
+      - postgres
+    ports:
+      - '5000:5000'
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - DB_USER=postgres
+      - DB_HOST=postgres
+      - DB_NAME=ticket_bot_db
+      - DB_PASSWORD=post_pwd
+      - DB_PORT=5432
+      - FOREST_ENV_SECRET=1c5ced19455da11b95134fd39daf448ead1c059999e0d48fb3d58404706838cf
+      - FOREST_AUTH_SECRET=74004b046970d6587c2383e84b4a81486c4568c8b8c4ff00
+    restart: always
+
+volumes:
+  postgres_db:

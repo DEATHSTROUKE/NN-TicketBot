@@ -18,6 +18,7 @@
 /react-app/yarn-debug.log*
 /react-app/yarn-error.log*
 
+
 /react-app/.env
 
 /backend/node_modules
