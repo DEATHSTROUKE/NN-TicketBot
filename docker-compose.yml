@@ -9,16 +9,16 @@ services:
     volumes:
       - postgres_db:/var/lib/postgresql/data
 
-  nginx:
-    depends_on:
-      - server
-    environment:
-      - REACT_APP_SERVER_NAME='http://localhost:5000/api'
-      - REACT_APP_SERVER_NAME_PUBLIC='http://localhost:5000'
-    restart: always
-    build: ./react-app
-    ports:
-      - "80:80"
+#  nginx:
+#    depends_on:
+#      - server
+#    environment:
+#      - REACT_APP_SERVER_NAME='http://localhost:5000/api'
+#      - REACT_APP_SERVER_NAME_PUBLIC='http://localhost:5000'
+#    restart: always
+#    build: ./react-app
+#    ports:
+#      - "80:80"
 
   server:
     build: ./backend

@@ -3,8 +3,8 @@ WORKDIR /app
 COPY ./package.json ./
 RUN npm i
 COPY . .
-ENV REACT_APP_SERVER_NAME='http://localhost:5000/api'
-ENV REACT_APP_SERVER_NAME_PUBLIC='http://localhost:5000'
+ENV REACT_APP_SERVER_NAME='https://ticket-bot.online/api'
+ENV REACT_APP_SERVER_NAME_PUBLIC='https://ticket-bot.online/'
 RUN npm run build
 
 FROM nginx
