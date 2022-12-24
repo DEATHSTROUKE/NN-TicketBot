@@ -34,8 +34,10 @@ services:
       - DB_NAME=ticket_bot_db
       - DB_PASSWORD=post_pwd
       - DB_PORT=5432
-      - FOREST_ENV_SECRET=1c5ced19455da11b95134fd39daf448ead1c059999e0d48fb3d58404706838cf
-      - FOREST_AUTH_SECRET=74004b046970d6587c2383e84b4a81486c4568c8b8c4ff00
+      - FOREST_ENV_SECRET=366f9f2d5d6db1578985ab515bee7d68bde34628067dff4f17e57c1b5e704842
+      - FOREST_AUTH_SECRET=c2f14196864b16a6a3d09cc3d85c45b8bf9f5ae6f732b604
+      - FOREST_AGENT_URL=https://ticket-bot.online
+      - SECRET_KEY=ama_secret_key
     restart: always
 
 volumes:
